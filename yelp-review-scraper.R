@@ -72,23 +72,15 @@ scrape_review_date <- function(link) {
   return(review_dates)                                                            
 }                                                                               
 
-# apply functions  
+# Apply functions  
 review_name <- scrape_review_name(url)
 review_text <- scrape_review_text(url)                                          
 review_rating <- scrape_review_rating(url)                                      
 review_date <- scrape_review_date(url)     
 review_location <- scrape_review_location(url)
 
-# create a data frame                                        
+# Create a data frame                                        
 df <- tibble(name = review_name[1],
              date = review_date[1],                                             
              rating = review_rating[1],                                                      
              text = review_text[1])                                                          
-
-for (i in 2:length(review_text)) {                                                                       
-  df[i, "name"] <- review_name[i]
-  df[i, "date"] <- review_date[i]                                                 
-  df[i, "rating"] <- review_rating[i]                                             
-  df[i, "text"] <- review_text[i]                                                 
-  
-}
